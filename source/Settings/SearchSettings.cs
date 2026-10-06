@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Playnite.SDK;
 using QuickSearch.Attributes;
 using QuickSearch.SearchItems.Settings;
@@ -236,6 +236,30 @@ namespace QuickSearch
             if (savedSettings != null)
             {
                 CopyProperties(savedSettings, this);
+            }
+            else
+            {
+                try
+                {
+                    var legacyPath = System.IO.Path.Combine(
+                        System.IO.Path.GetDirectoryName(plugin.GetPluginUserDataPath()),
+                        "felixkmh_QuickSearch_Plugin",
+                        "config.json");
+                    if (System.IO.File.Exists(legacyPath))
+                    {
+                        var json = System.IO.File.ReadAllText(legacyPath);
+                        var legacySettings = JsonConvert.DeserializeObject<SearchSettings>(json);
+                        if (legacySettings != null)
+                        {
+                            CopyProperties(legacySettings, this);
+                            plugin.SavePluginSettings(this);
+                        }
+                    }
+                }
+                catch
+                {
+                    // Fall back to defaults on error
+                }
             }
         }
 

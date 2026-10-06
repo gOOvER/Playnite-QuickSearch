@@ -1,14 +1,16 @@
-﻿Id: felixkmh_QuickSearch_Plugin
-Name: QuickSearch
-Author: felixkmh
-Version: 2.24.6
+Id: goover_QuickSearchNG_Plugin
+Name: QuickSearch-NG
+Author: gOOvER
+Version: 1.0.0
 Module: QuickSearch.dll
 Type: GenericPlugin
 Icon: QuickSearch.png
 Links:
+  - Name: Website
+    Url: https://playnite.goover.dev
   - Name: GitHub
-    Url: https://github.com/felixkmh/QuickSearch-for-Playnite
-  - Name: Playnite Forum
-    Url: https://playnite.link/forum/thread-677.html
-  - Name: Translate
-    Url: https://crowdin.com/project/quicksearch-for-playnite
+    Url: https://github.com/gOOvER/Playnite-QuickSearch
+  - Name: Issues
+    Url: https://github.com/gOOvER/Playnite-QuickSearch/issues
+  - Name: Ko-fi
+    Url: https://ko-fi.com/goover

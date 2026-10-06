@@ -1,295 +1,73 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\LibGit2Sharp.NativeBinaries.2.0.306\build\net46\LibGit2Sharp.NativeBinaries.props" Condition="Exists('packages\LibGit2Sharp.NativeBinaries.2.0.306\build\net46\LibGit2Sharp.NativeBinaries.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4FDF1E89-5BC3-4C72-8FDA-0D580E7A5D5F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuickSearch</RootNamespace>
     <AssemblyName>QuickSearch</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>net462</TargetFramework>
+    <UseWpf>true</UseWpf>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <!-- Suppress NuGet audit warning for legacy packages required by host -->
+    <NoWarn>$(NoWarn);NU1903;NU1701</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+
+  <!-- Localization files must be Content (copied to output), not compiled XAML Pages -->
   <ItemGroup>
-    <Reference Include="F23.StringSimilarity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\F23.StringSimilarity.4.1.0\lib\net45\F23.StringSimilarity.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlRenderer, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\HtmlRenderer.Core.1.5.1-beta1\lib\net45\HtmlRenderer.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="HtmlRenderer.WPF, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\HtmlRenderer.WPF.1.5.1-beta1\lib\net45\HtmlRenderer.WPF.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.3.11, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>packages\SharpZipLib.1.3.3\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="LibGit2Sharp, Version=0.26.0.0, Culture=neutral, PublicKeyToken=7cbde695407f0333, processorArchitecture=MSIL">
-      <HintPath>packages\LibGit2Sharp.0.26.2\lib\net46\LibGit2Sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Analyzers, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Analyzers.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Core, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.FastVectorHighlighter, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.FastVectorHighlighter.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Highlighter, Version=2.3.2.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Highlighter.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Memory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Queries, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Queries.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Regex, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Regex.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.SimpleFacetedSearch, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.SimpleFacetedSearch.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Snowball, Version=2.0.0.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.Snowball.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.SpellChecker, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>packages\Lucene.Net.Contrib.3.0.3\lib\net40\Lucene.Net.Contrib.SpellChecker.dll</HintPath>
-    </Reference>
-    <Reference Include="Markdown.Xaml, Version=1.11.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\MdXaml_migfree.1.11.0\lib\net45\Markdown.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json.Schema, Version=3.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.Schema.3.0.5\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
-    </Reference>
-    <Reference Include="Octokit, Version=0.50.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Octokit.0.50.0\lib\net46\Octokit.dll</HintPath>
-    </Reference>
-    <Reference Include="Playnite.SDK, Version=6.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\PlayniteSDK.6.1.0\lib\net462\Playnite.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="StartPage.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\StartPage.SDK.1.0.0\lib\net462\StartPage.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="YamlDotNet, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\YamlDotNet.5.4.0\lib\net45\YamlDotNet.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controls\ActionButton.xaml.cs">
-      <DependentUpon>ActionButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\AnimatedScrollViewer.cs" />
-    <Compile Include="Controls\AutoScrollViewer.cs" />
-    <Compile Include="Controls\HtmlPanelExt.xaml.cs">
-      <DependentUpon>HtmlPanelExt.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Converters\ElementToRelativeRectConverter.cs" />
-    <Compile Include="Converters\ICollectionNullOrEmptyToBoolConverter.cs" />
-    <Compile Include="Converters\ListToStringConverter.cs" />
-    <Compile Include="Converters\RomsToStringConverter.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Models\Candidate.cs" />
-    <Compile Include="Models\CheapShark.cs" />
-    <Compile Include="MultiDisposer.cs" />
-    <Compile Include="MultiFilter.cs" />
-    <Compile Include="SearchItems\AddonBrowser.cs" />
-    <Compile Include="SearchItems\CheapShark.cs" />
-    <Compile Include="SearchItems\ExtensionItemSource.cs" />
-    <Compile Include="SearchItems\MetadataSource.cs" />
-    <Compile Include="Settings\Hotkey.cs" />
-    <Compile Include="HotkeyHelper.cs" />
-    <Compile Include="Settings\ITADShopOption.cs" />
-    <Compile Include="Models\ITAD.cs" />
-    <Compile Include="Models\SchemaHelper.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="SearchItems\ITAD.cs" />
-    <Compile Include="SearchResult.xaml.cs">
-      <DependentUpon>SearchResult.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Matching.cs" />
-    <Compile Include="SearchItems\GameSearchItem.cs" />
-    <Compile Include="SearchPlugin.cs" />
-    <Compile Include="Settings\AssemblyOptions.cs" />
-    <Compile Include="Settings\SearchSettings.cs" />
-    <Compile Include="ViewModels\LuceneSearchViewModel.cs" />
-    <Compile Include="ViewModels\SearchViewModel.cs" />
-    <Compile Include="ViewModels\TextFileViewModel.cs" />
-    <Compile Include="Views\AddonDetailsView.xaml.cs">
-      <DependentUpon>AddonDetailsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\GameDetailsView.xaml.cs">
-      <DependentUpon>GameDetailsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PopupWindow.xaml.cs">
-      <DependentUpon>PopupWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SearchSettingsView.xaml.cs">
-      <DependentUpon>SearchSettingsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\SearchView.xaml.cs">
-      <DependentUpon>SearchView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SearchWindow.xaml.cs">
-      <DependentUpon>SearchWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TextFileView.xaml.cs">
-      <DependentUpon>TextFileView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="extension.yaml">
+    <Page Remove="Localization\**" />
+    <Content Include="Localization\*.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config" />
+    </Content>
+    <Compile Remove="QuickSearchSDK\**" />
+    <Compile Remove="QuickSearchSDK.Attributes\**" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Include="Controls\ActionButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\HtmlPanelExt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SearchResult.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AddonDetailsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\GameDetailsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PopupWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SearchSettingsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SearchView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SearchWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TextFileView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\extern\PlayniteCommon\PlayniteCommon.csproj">
-      <Project>{426461dc-3089-4ec5-99a2-a55733ed33fe}</Project>
-      <Name>PlayniteCommon</Name>
-    </ProjectReference>
-    <ProjectReference Include="QuickSearchSDK.Attributes\QuickSearchSDK.Attributes.csproj">
-      <Project>{D4892F70-05C7-4DE2-8E4A-36F3BD82D168}</Project>
-      <Name>QuickSearchSDK.Attributes</Name>
-    </ProjectReference>
-    <ProjectReference Include="QuickSearchSDK\QuickSearchSDK.csproj">
-      <Project>{0425a0c6-c410-48fc-8218-6f7b124eeca5}</Project>
-      <Name>QuickSearchSDK</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+
   <ItemGroup>
     <Resource Include="Images\noise.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="QuickSearch.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Localization/*.xaml">
+    <None Include="extension.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>del /q $(ProjectDir)$(OutDir)*.xml
-del /q /s $(ProjectDir)$(OutDir)lib\*.pdb
-rmdir /s /q $(ProjectDir)$(OutDir)lib\alpine.3.9-x64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\alpine-x64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\debian.9-x64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\debian-arm64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\fedora-x64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\osx
-rmdir /s /q $(ProjectDir)$(OutDir)lib\rhel-x64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\ubuntu.16.04-arm64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\ubuntu.18.04-x64
-rmdir /s /q $(ProjectDir)$(OutDir)lib\linux-x64
-%25LOCALAPPDATA%25\Playnite\Toolbox.exe pack $(ProjectDir)$(OutDir) $(ProjectDir)bin
-</PostBuildEvent>
-  </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Dieses Projekt verweist auf mindestens ein NuGet-Paket, das auf diesem Computer fehlt. Verwenden Sie die Wiederherstellung von NuGet-Paketen, um die fehlenden Dateien herunterzuladen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=322105". Die fehlende Datei ist "{0}".</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\LibGit2Sharp.NativeBinaries.2.0.306\build\net46\LibGit2Sharp.NativeBinaries.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\LibGit2Sharp.NativeBinaries.2.0.306\build\net46\LibGit2Sharp.NativeBinaries.props'))" />
-  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="PlayniteSDK" Version="6.18.0">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.5" />
+    <PackageReference Include="F23.StringSimilarity" Version="4.1.0" />
+    <PackageReference Include="HtmlRenderer.WPF" Version="1.5.1-beta1" />
+    <PackageReference Include="SharpZipLib" Version="1.3.3" />
+    <PackageReference Include="LibGit2Sharp" Version="0.26.2" />
+    <PackageReference Include="Lucene.Net" Version="3.0.3" />
+    <PackageReference Include="Lucene.Net.Contrib" Version="3.0.3" />
+    <PackageReference Include="MdXaml_migfree" Version="1.11.0" />
+    <PackageReference Include="Octokit" Version="0.50.0" />
+    <PackageReference Include="StartPage.SDK" Version="1.0.0" />
+    <PackageReference Include="YamlDotNet" Version="5.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\extern\PlayniteCommon\PlayniteCommon.csproj" />
+    <ProjectReference Include="QuickSearchSDK\QuickSearchSDK.csproj" />
+    <ProjectReference Include="QuickSearchSDK.Attributes\QuickSearchSDK.Attributes.csproj" />
+  </ItemGroup>
 </Project>

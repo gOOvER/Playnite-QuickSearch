@@ -1,31 +1,51 @@
-## v2.2.0 (2021-09-15)
+# Changelog
 
-### Fix
+All notable changes to the "QuickSearch-NG" extension will be documented in this file.
 
-- resource name typo
-- wrong icon for addons action
-- itad and cheapshark subitemsources names didn't use localization
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### Feat
+## [1.0.0] - 2026-10-06
 
-- added action to open add-on menu
+### Added
+- Rebranded extension to **QuickSearch-NG** v1.0.0 under gOOvER.
+- Automatic settings migration from legacy `felixkmh_QuickSearch_Plugin` configuration if detected.
+- PowerShell automated build and packaging script (`build.ps1`).
 
-## v2.1.1 (2021-09-10)
+### Changed
+- Modernized all projects to SDK-style project formats targeting `.NET Framework 4.6.2`.
+- Updated `PlayniteSDK` reference to latest `6.18.0`.
+- Integrated `PlayniteCommon` submodule directly into the repository and removed legacy `.gitmodules`.
+- Cleaned up build warnings and package dependencies.
 
-### Fix
+---
 
-- crash in some cases when opening the search window
-- blurred background no longe shifts when sidepanels open
+## Legacy Changelog (Felixkmh QuickSearch)
 
-### Refactor
+### v2.2.0 (2021-09-15)
 
-- added UiHelper
-- added empty constructor for GameSearchItem
+#### Fix
+- Resource name typo
+- Wrong icon for addons action
+- ITAD and CheapShark subitemsources names didn't use localization
 
-## v2.1.0 (2021-09-04)
+#### Feat
+- Added action to open add-on menu
 
-## v2.0.0 (2021-09-03)
+### v2.1.1 (2021-09-10)
 
-## v1.5.1 (2021-06-16)
+#### Fix
+- Crash in some cases when opening the search window
+- Blurred background no longer shifts when sidepanels open
 
-## v1.5.0 (2021-06-13)
+#### Refactor
+- Added UiHelper
+- Added empty constructor for GameSearchItem
+
+### v2.1.0 (2021-09-04)
+
+### v2.0.0 (2021-09-03)
+
+### v1.5.1 (2021-06-16)
+
+### v1.5.0 (2021-06-13)
